@@ -1,0 +1,20 @@
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rem 0;
+  background: #fdfdfe;
+
+  &__title {
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: #2D2442;
+    margin: 0rem 0rem 2rem 0rem;
+    text-align: center;
+  }
+
+  &__wrapper {
+    max-width: 65rem;
+    width: 100%;
+  }
+}
