@@ -34,9 +34,10 @@ const quizSlice = createSlice({
         ],
         isFinishedQuiz: false,
         results: {},
+        menu: false,
     },
     reducers: {
-        onAnswerClickHandler(state, {type, payload}) {
+        onAnswerClickHandler(state, {payload}) {
             if (state.answerState) {
                 const key = Object.keys(state.answerState)[0];
                 if (state.answerState[key] === "success") {
@@ -68,8 +69,21 @@ const quizSlice = createSlice({
                 state.answerState = {[payload.id]: "error"};
             }
         },
+        onRetryHandler(state, {payload}) {
+            state.answerState = null;
+            state.activeQuestion = 0;
+            state.isFinishedQuiz = false;
+            state.results = {};
+        },
+
+        toggleMenuHandler(state, {payload}) {
+            state.menu = !state.menu;
+        },
+        menuCloseHandler(state, {payload}) {
+            state.menu = false;
+        }
     },
 });
 
-export const {onAnswerClickHandler} = quizSlice.actions;
+export const {onAnswerClickHandler, onRetryHandler, toggleMenuHandler, menuCloseHandler} = quizSlice.actions;
 export default quizSlice.reducer;

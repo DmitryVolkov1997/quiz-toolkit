@@ -1,9 +1,12 @@
 import React from "react";
 import classes from "./FinishedQuiz.module.scss";
 import {IoClose, IoChevronDownSharp} from "react-icons/io5";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import {onRetryHandler} from "../../store/quizSlice";
+import Button from "../UI/Button/Button";
 
 const FinishedQuiz = () => {
+    const dispatch = useDispatch();
     const quiz = useSelector(state => state.quiz.quiz);
     const results = useSelector(state => state.quiz.results);
 
@@ -32,22 +35,12 @@ const FinishedQuiz = () => {
                       );
                   })
               }
-              {/*<li className={classes.FinishedQuiz__item}>*/}
-              {/*    <strong>1. </strong>*/}
-              {/*    How are you?*/}
-              {/*    <IoClose className={classes.error}/>*/}
-              {/*</li>*/}
-              {/*<li className={classes.FinishedQuiz__item}>*/}
-              {/*    <strong>2.</strong>*/}
-              {/*    How are you?*/}
-              {/*    <IoChevronDownSharp className={classes.success}/>*/}
-              {/*</li>*/}
           </ul>
           <div className={classes.borderTop}>
               <p className={classes.FinishedQuiz__count}>Правильно {successCount} из {quiz.length}</p>
-              <div>
-                  <button>Повторить</button>
-                  <button type="success">Перейти в список тестов</button>
+              <div className={classes.buttons}>
+                  <Button type="primary" onClick={() => dispatch(onRetryHandler())}>Повторить</Button>
+                  <Button type="success">Перейти в список тестов</Button>
               </div>
           </div>
       </div>
