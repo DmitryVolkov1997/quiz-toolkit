@@ -4,6 +4,7 @@ import {IoClose, IoChevronDownSharp} from "react-icons/io5";
 import {useSelector, useDispatch} from "react-redux";
 import {onRetryHandler} from "../../store/quizSlice";
 import Button from "../UI/Button/Button";
+import {Link} from "react-router-dom";
 
 const FinishedQuiz = () => {
     const dispatch = useDispatch();
@@ -40,7 +41,9 @@ const FinishedQuiz = () => {
               <p className={classes.FinishedQuiz__count}>Правильно {successCount} из {quiz.length}</p>
               <div className={classes.buttons}>
                   <Button type="primary" onClick={() => dispatch(onRetryHandler())}>Повторить</Button>
-                  <Button type="success">Перейти в список тестов</Button>
+                  <Button type="success">
+                      <Link to="/">Перейти в список тестов</Link>
+                  </Button>
               </div>
           </div>
       </div>

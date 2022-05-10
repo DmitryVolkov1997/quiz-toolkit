@@ -1,6 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import classes from "./AnswerItem.module.scss";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {onAnswerClickHandler} from "../../../../../store/quizSlice";
 
 const AnswerItem = ({id, text, state}) => {
